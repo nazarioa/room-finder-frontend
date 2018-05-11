@@ -7,22 +7,48 @@
 </head>
 <body>
 <div class="page-wrapper">
+    <h1 class="page-title">Room Finder</h1>
     <div class="search-box">
         <div class="search">
+            <!--
+            <label clas="lbl inp-search">Search</label>
+            -->
             <input type="search" class="inp inp-search">
-        </div>
-        <div class="actions search-box-actions">
-            <button class="btn btn-search primary">Search</button>
         </div>
     </div>
 
-    <section class="search-results">
-        <div class="search-result-list">
+    <div class="search-results">
+        <ul class="search-results-list">
+        </ul>
+    </div>
+
+    <section class="selected-result hidden">
+        <div class="selected-result-map">
+            <img src=""/>
         </div>
 
-        <div class="search-result-map">
+        <div class="selected-result-details">
         </div>
     </section>
+
+    <template id="tpl-person-list-item">
+        <li class="person-list-item">
+            <div class="person-first-name"><span class="value"></span></div>
+            <div class="person-last-name"><span class="value"></span></div>
+            <div class="person-email"><span class="value"></span></div>
+            <ul class="person-rooms">
+            </ul>
+        </li>
+    </template>
+
+    <template id="tpl-room-list-item">
+        <li class="room-list-item">
+            <div class="building-address"><span class="value"></span></div>
+            <div class="building-floor"><span class="value"></span></div>
+            <div class="person-room-room-number">Room Number: <span class="value"></span></div>
+        </li>
+    </template>
+
 </div>
 
 </body>

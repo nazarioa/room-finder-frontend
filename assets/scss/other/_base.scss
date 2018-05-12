@@ -1,0 +1,18 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: $base-font-size;
+}
+
+input {
+  color: $accent-color-secondary;
+}
+
+.hidden {
+  display: none;
+  height: 0;
+  width: 0;
+  opacity: 0;
+}

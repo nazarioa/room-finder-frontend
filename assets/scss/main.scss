@@ -1,2 +1,6 @@
 @import "../../node_modules/css-reset-and-normalize-sass/scss/reset-and-normalize.scss";
+@import "variables";
+@import "other/base";
+@import "components/page";
 @import "components/btn";
+@import "components/search-box";

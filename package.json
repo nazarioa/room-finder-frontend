@@ -2,10 +2,10 @@
   "name": "room-finder",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node-sass -w ./assets/scss/main.scss -o ./assets/css/"
+    "build": "webpack --config webpack.config.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +13,10 @@
     "css-reset-and-normalize-sass": "^0.1.2"
   },
   "devDependencies": {
+    "css-loader": "^0.28.11",
     "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
     "webpack": "^4.8.2",
     "webpack-cli": "^2.1.3"
   }

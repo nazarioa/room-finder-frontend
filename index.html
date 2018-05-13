@@ -7,13 +7,9 @@
 <body>
 <div class="page-wrapper">
     <h1 class="page-title">Room Finder</h1>
+
     <div class="search-box">
-        <div class="search">
-            <!--
-            <label clas="lbl inp-search">Search</label>
-            -->
-            <input type="search" class="inp inp-search">
-        </div>
+        <input type="search" class="inp inp-search">
     </div>
 
     <div class="search-results">
@@ -29,26 +25,25 @@
         <div class="selected-result-details">
         </div>
     </section>
-
-    <template id="tpl-person-list-item">
-        <li class="person-list-item">
-            <div class="person-first-name"><span class="value"></span></div>
-            <div class="person-last-name"><span class="value"></span></div>
-            <div class="person-email"><span class="value"></span></div>
-            <ul class="person-rooms">
-            </ul>
-        </li>
-    </template>
-
-    <template id="tpl-room-list-item">
-        <li class="room-list-item">
-            <div class="building-address"><span class="value"></span></div>
-            <div class="building-floor"><span class="value"></span></div>
-            <div class="person-room-room-number">Room Number: <span class="value"></span></div>
-        </li>
-    </template>
-
 </div>
+
+<template id="tpl-person-list-item">
+    <li class="person-list-item">
+        <div class="person-first-name"><span class="value"></span></div>
+        <div class="person-last-name"><span class="value"></span></div>
+        <div class="person-email"><span class="value"></span></div>
+        <ul class="person-rooms">
+        </ul>
+    </li>
+</template>
+
+<template id="tpl-room-list-item">
+    <li class="room-list-item">
+        <div class="building-address"><span class="value"></span></div>
+        <div class="building-floor"><span class="value"></span></div>
+        <div class="person-room-room-number">Room Number: <span class="value"></span></div>
+    </li>
+</template>
 
 </body>
 <script type="application/javascript" src="./dist/bundle.js"></script>

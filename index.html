@@ -8,23 +8,26 @@
 <div class="page-wrapper">
     <h1 class="page-title">Room Finder</h1>
 
-    <div class="search-box">
-        <input type="search" class="inp inp-search">
-    </div>
-
-    <div class="search-results">
-        <ul class="search-results-list">
-        </ul>
-    </div>
-
-    <section class="selected-result hidden">
-        <div class="selected-result-map">
-            <img src=""/>
+    <main class="app app-search">
+        <div class="search-box">
+            <input type="search" class="inp inp-search" placeholder="Input room or person name">
         </div>
 
-        <div class="selected-result-details">
+        <div class="search-results">
+            <ul class="search-results-list">
+            </ul>
         </div>
-    </section>
+
+        <section class="selected-result">
+            <div class="selected-result-map">
+                <img src=""/>
+            </div>
+
+            <div class="selected-result-details">
+            </div>
+        </section>
+    </main>
+
 </div>
 
 <template id="tpl-person-list-item">

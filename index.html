@@ -23,7 +23,20 @@
                 <img src=""/>
             </div>
 
-            <div class="selected-result-details">
+            <div class="room-details">
+                <div class="sub-title">Building</div>
+                <div class="building-name">Name: <span class="value"></span></div>
+                <div class="building-address">Address:
+                    <span class="address value"></span>
+                    <span class="city value"></span>,
+                    <span class="state value"></span>
+                </div>
+
+                <div class="">Floor <span class="floor value"></span> <span class="room value"></span></div>
+            </div>
+
+            <div class="person-details">
+                <div class=""></div>
             </div>
         </section>
     </main>
@@ -32,19 +45,23 @@
 
 <template id="tpl-person-list-item">
     <li class="person-list-item">
-        <div class="person-first-name"><span class="value"></span></div>
-        <div class="person-last-name"><span class="value"></span></div>
-        <div class="person-email"><span class="value"></span></div>
-        <ul class="person-rooms">
-        </ul>
+        <span class="first-name value"></span>
+        <span class="last-name value"></span>
+        (<a class="email value" href="#"></a>)
     </li>
 </template>
 
 <template id="tpl-room-list-item">
     <li class="room-list-item">
-        <div class="building-address"><span class="value"></span></div>
-        <div class="building-floor"><span class="value"></span></div>
-        <div class="person-room-room-number">Room Number: <span class="value"></span></div>
+        <div class="room-detail">
+            <span class="room label">Room: </span><span class="room value"></span>
+            <span class="floor label">Floor: </span><span class="floor value"></span>
+        </div>
+        <div class="building-detail">
+            <span class="building-name value"></span>
+            <span class="building-address label">Address: </span><span class="building-address value"></span>
+            <span class="building-city value"></span> <span class="building-state value"></span>
+        </div>
     </li>
 </template>
 

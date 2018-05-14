@@ -44,7 +44,7 @@ import Rx from 'rxjs/Rx';
         return 'person';
       }
 
-      if (item.hasOwnProperty('floor_id') && item.hasOwnProperty('has_whiteboard')) {
+      if (item.hasOwnProperty('floor_id')) {
         return 'room';
       }
 
@@ -52,10 +52,11 @@ import Rx from 'rxjs/Rx';
     },
 
     render: function () {
+      const searchResultList = document.querySelector('.search-results .search-results-list');
+      searchResultList.innerHTML = '';
+
       this.list.forEach(item => {
         const type = this.discoverType(item);
-        const searchResultList = document.querySelector('.search-results .search-results-list');
-        searchResultList.innerHTML = '';
 
         let row = null;
 
@@ -63,21 +64,25 @@ import Rx from 'rxjs/Rx';
           row = document.importNode(tplPersonListItem.content, true);
           row.querySelector('.first-name.value').innerHTML = item.first_name;
           row.querySelector('.last-name.value').innerHTML = item.last_name;
+          row.querySelector('.email.value').innerHTML = item.email;
           row.querySelector('.email.value').setAttribute('href', `mailto:${item.email}`);
         }
 
         if (type === 'room') {
-          console.log('Rooms!!', item);
           row = document.importNode(tplRoomListItem.content, true);
-          /*
-          row.querySelector('.building-address .address.value').innerHTML = 'Address';
-          row.querySelector('.building-city-state .city.value').innerHTML = 'City';
-          row.querySelector('.building-city-state .state.value').innerHTML = 'State';
-          row.querySelector('.building-city-state .state.value').innerHTML = 'State';
-          */
+          row.querySelector('.room-detail .room.value').innerHTML = item.name;
+          row.querySelector('.room-detail .floor.value').innerHTML = item.Floors.name;
+          row.querySelector('.building-detail .building-name.value').innerHTML = item.Buildings.name;
+          row.querySelector('.building-detail .building-address.value').innerHTML = item.Buildings.address;
+          row.querySelector('.building-detail .building-city.value').innerHTML = item.Buildings.city;
+          row.querySelector('.building-detail .building-state.value').innerHTML = item.Buildings.state;
         }
 
-        if(row) {
+        if (type === 'unknown') {
+          console.log('Could not find type.');
+        }
+
+        if (row) {
           searchResultList.appendChild(row);
         }
       });

@@ -1,0 +1,10 @@
+.search-results {
+  .list-item {
+    background-color: #eeeeee;
+    padding: 0.5em;
+
+    &:nth-child(2n+1) {
+      background-color: #dddddd;
+    }
+  }
+}

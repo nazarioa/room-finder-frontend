@@ -1,20 +1,21 @@
 .app {
   &.app-search {
-    grid-template-columns: 20% 1fr;
+    display: grid;
+    grid-template-columns: 40% 1fr;
     grid-template-rows: auto auto;
-    grid-template-areas: 'search-input search-input' 'result-list result-selected';
+    grid-template-areas: 'searchInput searchInput'
+                         'resultList resultSelected';
 
     .search-box {
-      grid-area: search-input;
-      background-color: #4596be;
+      grid-area: searchInput;
     }
 
     .search-results {
-      grid-area: result-list;
+      grid-area: resultList;
     }
 
     .selected-result {
-      grid-area: result-selected;
+      grid-area: resultSelected;
     }
   }
 }

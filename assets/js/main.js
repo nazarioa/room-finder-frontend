@@ -14,24 +14,20 @@ import Rx from 'rxjs/Rx';
   const inpSearch = document.querySelector('.inp.inp-search');
 
   const SelectedResult = {
-    person: null,
-    building: null,
-    floor: null,
-    selected: true,
+    item: null,
+    show: false,
 
     render: function () {
-
-      if (this.selected) {
-
+      if (this.show) {
         if (floor && floor.image_url) {
           selectedResult.querySelector('.result-map img').setAttribute('src', 'floor.image_url');
         } else {
           selectedResult.querySelector('.result-map img').setAttribute('src', '//defualtUrl.');
         }
 
-        searchResults.classList.remove('hidden');
+        selectedResult.classList.remove('hidden');
       } else {
-        searchResults.classList.add('hidden');
+        selectedResult.classList.add('hidden');
       }
     }
   };
@@ -70,12 +66,12 @@ import Rx from 'rxjs/Rx';
 
         if (type === 'room') {
           row = document.importNode(tplRoomListItem.content, true);
-          row.querySelector('.room-detail .room.value').innerHTML = item.name;
-          row.querySelector('.room-detail .floor.value').innerHTML = item.Floors.name;
-          row.querySelector('.building-detail .building-name.value').innerHTML = item.Buildings.name;
-          row.querySelector('.building-detail .building-address.value').innerHTML = item.Buildings.address;
-          row.querySelector('.building-detail .building-city.value').innerHTML = item.Buildings.city;
-          row.querySelector('.building-detail .building-state.value').innerHTML = item.Buildings.state;
+          row.querySelector('.room-detail .room.value').innerHTML = item.name || '';
+          row.querySelector('.room-detail .floor.value').innerHTML = item.Floors.name || '';
+          row.querySelector('.building-detail .building-name.value').innerHTML = item.Buildings.name || '';
+          row.querySelector('.building-detail .building-address.value').innerHTML = item.Buildings.address || '';
+          row.querySelector('.building-detail .building-city.value').innerHTML = item.Buildings.city || '';
+          row.querySelector('.building-detail .building-state.value').innerHTML = item.Buildings.state || '';
         }
 
         if (type === 'unknown') {
@@ -83,9 +79,18 @@ import Rx from 'rxjs/Rx';
         }
 
         if (row) {
-          searchResultList.appendChild(row);
+          this.searchResultList.appendChild(row);
         }
       });
+
+      if (this.list.length === 1) {
+        SelectedResult.item = this.list[0];
+        SelectedResult.show = true;
+      } else if (this.list.length === 0) {
+        SelectedResult.show = false;
+      }
+
+      SelectedResult.render();
     }
   };
 
@@ -119,5 +124,7 @@ import Rx from 'rxjs/Rx';
     }
 
   });
+
+  ResultsList.render();
 
 })(window);

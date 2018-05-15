@@ -48,16 +48,25 @@ import Rx from 'rxjs/Rx';
 
     drawMapData: function (mapId, roomCoordinates) {
       this.map_id = mapId;
+      const resultMapCanvas = document.querySelector('.result-map');
+      const ctx = resultMapCanvas.getContext('2d');
+
       const getMapData = fetch(`http://api.room-finder.local/Maps/view/${this.map_id}`)
         .then(response => response.json())
         .then(data => data.map)
         .then(map => {
-          console.log(map);
+          const base_image = new Image();
+          base_image.src = map.image_url;
+          return new Promise((resolve, reject) => {
+            base_image.onload = () => resolve(base_image);
+            base_image.onerror = (event) => reject(event);
+          });
+        })
+        .then(image => {
+          ctx.clearRect(0, 0, resultMapCanvas.width, resultMapCanvas.height);
+          ctx.drawImage(image, 0, 0);
         })
         .then(() => {
-          const resultMapCanvas = document.querySelector('.result-map');
-          const ctx = resultMapCanvas.getContext('2d');
-
           if (Array.isArray(roomCoordinates) && roomCoordinates.length > 0) {
             ctx.fillStyle = 'rgba(240, 226, 0, 0.5)';
             ctx.beginPath();

@@ -1,13 +1,19 @@
 .app {
+  padding: 2rem;
+
   &.app-search {
     display: grid;
-    grid-template-columns: 40% 1fr;
+    grid-template-columns:  minmax(max-content, 400px) 1fr;
     grid-template-rows: auto auto;
     grid-template-areas: 'searchInput searchInput'
                          'resultList resultSelected';
+    justify-content: space-evenly;
+    grid-gap: 1rem;
 
     .search-box {
       grid-area: searchInput;
+      justify-self: stretch;
+      border: 1px solid $accent-color-secondary;
     }
 
     .search-results {
@@ -16,6 +22,9 @@
 
     .selected-result {
       grid-area: resultSelected;
+      justify-self: stretch;
+      border: 1px solid $accent-color-secondary;
+      padding: 0.5em;
     }
   }
 }

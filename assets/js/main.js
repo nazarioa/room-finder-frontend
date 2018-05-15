@@ -165,9 +165,9 @@ import Rx from 'rxjs/Rx';
       });
 
       if (this.list.length === 1) {
-        SelectedResult.item = this.list[0];
+        SelectedResult.populateRoomData(this.list[0].id);
         SelectedResult.show = true;
-      } else if (this.list.length === 0) {
+      } else {
         SelectedResult.show = false;
       }
 

@@ -148,11 +148,8 @@ import Rx from 'rxjs/Rx';
           row = document.importNode(tplRoomListItem.content, true);
           row.querySelector('.room-list-item.list-item').dataset.roomId = item.id;
           row.querySelector('.room-detail .room.value').innerHTML = item.name || '';
-          row.querySelector('.room-detail .floor.value').innerHTML = item.Floors.name || '';
-          row.querySelector('.building-detail .building-name.value').innerHTML = item.Buildings.name || '';
-          row.querySelector('.building-detail .building-address.value').innerHTML = item.Buildings.address || '';
-          row.querySelector('.building-detail .building-city.value').innerHTML = item.Buildings.city || '';
-          row.querySelector('.building-detail .building-state.value').innerHTML = item.Buildings.state || '';
+          row.querySelector('.building-detail .floor.value').innerHTML = item.Floors.name || '';
+          row.querySelector('.building-detail .name.value').innerHTML = item.Buildings.name || '';
         }
 
         if (type === 'unknown') {

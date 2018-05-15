@@ -1,11 +1,11 @@
 .search-results {
 
   .list-item {
-    background-color: #eeeeee;
     padding: 0.5em;
+    border-bottom: 1px solid lighten($accent-color-secondary, 20%);
 
-    &:nth-child(2n+1) {
-      background-color: #dddddd;
+    &:last-of-type {
+      border-bottom: 0 none transparent;
     }
   }
 }

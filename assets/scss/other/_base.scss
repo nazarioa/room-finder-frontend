@@ -10,6 +10,14 @@ input {
   color: $accent-color-secondary;
 }
 
+label {
+  font-weight: bold;
+}
+
+a {
+  color: darken($accent-color-primary, 20%);
+}
+
 .hidden {
   display: none;
   height: 0;

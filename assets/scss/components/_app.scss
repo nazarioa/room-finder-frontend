@@ -13,7 +13,6 @@
     .search-box {
       grid-area: searchInput;
       justify-self: stretch;
-      border: 1px solid $accent-color-secondary;
     }
 
     .search-results {
@@ -23,7 +22,6 @@
     .selected-result {
       grid-area: resultSelected;
       justify-self: stretch;
-      border: 1px solid $accent-color-secondary;
       padding: 0.5em;
     }
   }

@@ -1,5 +1,11 @@
 .selected-result {
 
+  .sub-title {
+    margin: 1.25em 0 0.25em 0;
+    font-weight: bold;
+    color: $accent-color-primary;
+  }
+
   .map-details {
     margin-bottom: 1em;
     position: relative;

@@ -3,6 +3,7 @@ import '../scss/main.scss';
 import Rx from 'rxjs/Rx';
 
 (function (OUTSIDE) {
+  const API_BASE = 'http://api-roomfinder.dev.niztech.com';
   const tplPersonListItem = document.querySelector('#tpl-person-list-item');
   const tplRoomListItem = document.querySelector('#tpl-room-list-item');
 
@@ -18,7 +19,7 @@ import Rx from 'rxjs/Rx';
 
     populateRoomData: function (roomId) {
       this.room_id = roomId;
-      const getRoomData = fetch(`http://api.room-finder.local/Rooms/view/${this.room_id}`)
+      const getRoomData = fetch(`${API_BASE}/Rooms/view/${this.room_id}`)
         .then(response => response.json())
         .then(data => data.room)
         .then(room => {
@@ -34,7 +35,7 @@ import Rx from 'rxjs/Rx';
 
     populateBuildingData: function (buildingId) {
       this.building_id = buildingId;
-      const getBuildingData = fetch(`http://api.room-finder.local/Buildings/view/${this.building_id}`)
+      const getBuildingData = fetch(`${API_BASE}/Buildings/view/${this.building_id}`)
         .then(response => response.json())
         .then(data => data.building)
         .then(building => {
@@ -51,7 +52,7 @@ import Rx from 'rxjs/Rx';
       const resultMapCanvas = document.querySelector('#map-canvas');
       const ctx = resultMapCanvas.getContext('2d');
 
-      const getMapData = fetch(`http://api.room-finder.local/Maps/view/${this.map_id}`)
+      const getMapData = fetch(`${API_BASE}/Maps/view/${this.map_id}`)
         .then(response => response.json())
         .then(data => data.map)
         .then(map => {
@@ -183,11 +184,11 @@ import Rx from 'rxjs/Rx';
 
     const inputSearchString = inpSearch.value;
     if (inputSearchString.length > 2) {
-      const userFuzzyResultPromise = fetch(`http://api.room-finder.local/Users/search/${inputSearchString}`)
+      const userFuzzyResultPromise = fetch(`${API_BASE}/Users/search/${inputSearchString}`)
         .then(response => response.json())
         .then(data => data.result);
 
-      const roomFuzzyResultPromise = fetch(`http://api.room-finder.local/Rooms/search/${inputSearchString}`)
+      const roomFuzzyResultPromise = fetch(`${API_BASE}/Rooms/search/${inputSearchString}`)
         .then(response => response.json())
         .then(data => data.result);
 

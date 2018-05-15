@@ -24,6 +24,8 @@
             </div>
 
             <div class="room-details">
+                <div class="">Floor: <span class="floor value"></span></div>
+                <div class="">Room: <span class="room value"></span> (<span class="roomcode value"></span>)</div>
                 <div class="sub-title">Building</div>
                 <div class="building-name">Name: <span class="value"></span></div>
                 <div class="building-address">Address:
@@ -31,8 +33,6 @@
                     <span class="city value"></span>,
                     <span class="state value"></span>
                 </div>
-
-                <div class="">Floor <span class="floor value"></span> <span class="room value"></span></div>
             </div>
 
             <div class="person-details">
@@ -44,7 +44,7 @@
 </div>
 
 <template id="tpl-person-list-item">
-    <li class="person-list-item list-item">
+    <li class="person-list-item list-item" data-room-id="" data-person-id="">
         <span class="first-name value"></span>
         <span class="last-name value"></span>
         (<a class="email value" href="#"></a>)
@@ -52,7 +52,7 @@
 </template>
 
 <template id="tpl-room-list-item">
-    <li class="room-list-item list-item">
+    <li class="room-list-item list-item" data-room-id="">
         <div class="room-detail">
             <span class="room label">Room: </span><span class="room value"></span>
             <span class="floor label">Floor: </span><span class="floor value"></span>

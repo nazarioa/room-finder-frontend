@@ -13,6 +13,7 @@ import Rx from 'rxjs/Rx';
   const SelectedResult = {
     room_id: null,
     building_id: null,
+    map_id: null,
     show: false,
 
     populateRoomData: function (roomId) {
@@ -21,12 +22,13 @@ import Rx from 'rxjs/Rx';
         .then(response => response.json())
         .then(data => data.room)
         .then(room => {
-          console.log(room);
           const roomDetailsDisplay = document.querySelector('.room-details');
           roomDetailsDisplay.querySelector('.floor.value').innerHTML = room.floor.name;
           roomDetailsDisplay.querySelector('.room.value').innerHTML = room.name;
           roomDetailsDisplay.querySelector('.roomcode.value').innerHTML = room.code;
           this.populateBuildingData(room.floor.building_id);
+          const imageCoordiantes = (room.image_coordinates && (room.image_coordinates.length > 0)) ? JSON.parse(room.image_coordinates) : [];
+          this.drawMapData(room.floor.map_id, imageCoordiantes);
         });
     },
 
@@ -42,6 +44,35 @@ import Rx from 'rxjs/Rx';
           buildingDetailsDisplay.querySelector('.building-address .city.value').innerHTML = building.city;
           buildingDetailsDisplay.querySelector('.building-address .state.value').innerHTML = building.state;
         });
+    },
+
+    drawMapData: function (mapId, roomCoordinates) {
+      this.map_id = mapId;
+      const getMapData = fetch(`http://api.room-finder.local/Maps/view/${this.map_id}`)
+        .then(response => response.json())
+        .then(data => data.map)
+        .then(map => {
+          console.log(map);
+        })
+        .then(() => {
+          const resultMapCanvas = document.querySelector('.result-map');
+          const ctx = resultMapCanvas.getContext('2d');
+
+          if (Array.isArray(roomCoordinates) && roomCoordinates.length > 0) {
+            ctx.fillStyle = 'rgba(240, 226, 0, 0.5)';
+            ctx.beginPath();
+            roomCoordinates.forEach((point, index) => {
+              if (index === 0) {
+                ctx.moveTo(point.x, point.y);
+              } else {
+                ctx.lineTo(point.x, point.y);
+              }
+            });
+            ctx.closePath();
+            ctx.fill();
+          }
+        })
+        .catch(error => console.log(error));
     },
 
     render: function () {

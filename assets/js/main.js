@@ -48,7 +48,7 @@ import Rx from 'rxjs/Rx';
 
     drawMapData: function (mapId, roomCoordinates) {
       this.map_id = mapId;
-      const resultMapCanvas = document.querySelector('.result-map');
+      const resultMapCanvas = document.querySelector('#map-canvas');
       const ctx = resultMapCanvas.getContext('2d');
 
       const getMapData = fetch(`http://api.room-finder.local/Maps/view/${this.map_id}`)
